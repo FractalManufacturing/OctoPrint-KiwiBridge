@@ -57,8 +57,8 @@ class KiwiBridgePlugin(octoprint.plugin.StartupPlugin,
 
 	def get_settings_defaults(self):
 
-		api_url = 'https://fractal.tech'
-		ws_url = 'wss://fractal.tech/ws/kiwi/'
+		api_url = 'http://192.168.0.14'
+		ws_url = 'ws://192.168.0.14/ws/kiwi/'
 
 		return dict(
 			token="",

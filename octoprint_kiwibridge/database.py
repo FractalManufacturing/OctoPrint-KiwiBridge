@@ -11,7 +11,7 @@ class DBManager():
 		conn = sqlite3.connect(self.db_name)
 		c = conn.cursor()
 
-		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
+		c.execute("""CREATE TABLE IF NOT EXISTS kiwi_commands (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
 
 		conn.commit()
 		conn.close()
@@ -20,8 +20,8 @@ class DBManager():
 		conn = sqlite3.connect(self.db_name)
 		c = conn.cursor()
 
-		c.execute("""DROP TABLE IF EXISTS print_files""")
-		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
+		c.execute("""DROP TABLE IF EXISTS kiwi_commands""")
+		c.execute("""CREATE TABLE IF NOT EXISTS kiwi_commands (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
 
 		conn.commit()
 		conn.close()
@@ -31,7 +31,7 @@ class DBManager():
 		c = conn.cursor()
 
 		t = (fileId, )
-		c.execute('SELECT * FROM print_files WHERE id=?', t)
+		c.execute('SELECT * FROM kiwi_commands WHERE id=?', t)
 
 		data = c.fetchone()
 		if data is None:
@@ -43,7 +43,7 @@ class DBManager():
 		conn.commit()
 		conn.close()
 
-		return data[3]
+		return data[2]
 
 	def addFile(self, fileData, overwrite=True):
 
@@ -54,7 +54,7 @@ class DBManager():
 		c = conn.cursor()
 
 		t = (fileData['id'], fileData['filename'], fileData['path'])
-		c.execute('INSERT INTO print_files VALUES (?, ?, ?)', t)
+		c.execute('INSERT INTO kiwi_commands VALUES (?, ?, ?)', t)
 
 		conn.commit()
 		conn.close()
@@ -64,7 +64,7 @@ class DBManager():
 		c = conn.cursor()
 
 		t = (fileData['id'], )
-		c.execute('DELETE FROM print_files WHERE id=?', t)
+		c.execute('DELETE FROM kiwi_commands WHERE id=?', t)
 
 		conn.commit()
 		conn.close()
@@ -74,7 +74,7 @@ class DBManager():
 		c = conn.cursor()
 
 		t = (fileData['id'],)
-		c.execute('SELECT * FROM print_files WHERE id=?', t)
+		c.execute('SELECT * FROM kiwi_commands WHERE id=?', t)
 
 		data = c.fetchone()
 

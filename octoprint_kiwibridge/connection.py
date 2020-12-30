@@ -8,7 +8,7 @@ class WebsocketManager():
 	def __init__(self, url, plugin, on_ws_message=None, on_ws_error=None, on_ws_close=None):
 
 		def on_open(ws):
-			plugin._logger.info('Fractal connection enabled')
+			plugin._logger.info('Kiwi connection enabled')
 			self.plugin.printerManager.connect()
 			self.plugin._plugin_manager.send_plugin_message(self.plugin._identifier, {"connected": True})
 

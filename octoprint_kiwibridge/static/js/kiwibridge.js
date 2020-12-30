@@ -1,11 +1,11 @@
 $(function() {
-    function FractalBridgeViewModel(parameters) {
+    function KiwiBridgeViewModel(parameters) {
         var self = this;
 
         self.settings = parameters[0];
         self.status = ko.observable("offline");
 
-        self.pluginName = "fractalbridge";
+        self.pluginName = "kiwibridge";
 
         self.connectToFractal = function () {
             var url = window.PLUGIN_BASEURL + self.pluginName + '/connect'
@@ -38,7 +38,7 @@ $(function() {
         }
 
         self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin != "fractalbridge") {
+            if (plugin != "kiwibridge") {
                 return;
             }
             if (data.connected) {
@@ -50,8 +50,8 @@ $(function() {
     }
 
     OCTOPRINT_VIEWMODELS.push([
-        FractalBridgeViewModel,
+        KiwiBridgeViewModel,
         ["settingsViewModel"],
-        ["#settings_plugin_fractalbridge"]
+        ["#settings_plugin_kiwibridge"]
     ]);
 });

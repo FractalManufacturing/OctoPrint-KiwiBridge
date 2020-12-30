@@ -78,8 +78,8 @@ class KiwiBridgePlugin(octoprint.plugin.StartupPlugin,
 
 	def get_assets(self):
 		return dict(
-			js=['js/fractalbridge.js'],
-			css=["css/fractalbridge.css"]
+			js=['js/kiwibridge.js'],
+			css=["css/kiwibridge.css"]
 		)
 
 	# BlueprintPlugin mixin

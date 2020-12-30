@@ -71,7 +71,7 @@ class KiwiBridgePlugin(octoprint.plugin.StartupPlugin,
 
 	def get_template_configs(self):
 		return [
-			dict(type="settings", name='Fractal', custom_bindings=True)
+			dict(type="settings", name='Kiwi', custom_bindings=True)
 		]
 
 	# AssetPlugin mixin

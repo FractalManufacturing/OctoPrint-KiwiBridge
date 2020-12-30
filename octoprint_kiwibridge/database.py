@@ -11,7 +11,7 @@ class DBManager():
 		conn = sqlite3.connect(self.db_name)
 		c = conn.cursor()
 
-		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, command INTEGER, path TEXT)""")
+		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
 
 		conn.commit()
 		conn.close()
@@ -21,7 +21,7 @@ class DBManager():
 		c = conn.cursor()
 
 		c.execute("""DROP TABLE IF EXISTS print_files""")
-		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, command INTEGER, path TEXT)""")
+		c.execute("""CREATE TABLE IF NOT EXISTS print_files (id INTEGER PRIMARY KEY, filename TEXT, path TEXT)""")
 
 		conn.commit()
 		conn.close()
@@ -53,8 +53,8 @@ class DBManager():
 		conn = sqlite3.connect(self.db_name)
 		c = conn.cursor()
 
-		t = (fileData['id'], fileData['filename'], fileData['command'], fileData['path'])
-		c.execute('INSERT INTO print_files VALUES (?, ?, ?, ?)', t)
+		t = (fileData['id'], fileData['filename'], fileData['path'])
+		c.execute('INSERT INTO print_files VALUES (?, ?, ?)', t)
 
 		conn.commit()
 		conn.close()
@@ -85,4 +85,4 @@ class DBManager():
 			return False
 
 		else:
-			return data[0] == fileData['id'] and data[1] == fileData['filename'] and data[2] == fileData['command']
+			return data[0] == fileData['id'] and data[1] == fileData['filename']

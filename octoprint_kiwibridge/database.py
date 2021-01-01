@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from octoprint.filemanager import FileDestinations
 
 class DBManager():
 
@@ -86,4 +87,4 @@ class DBManager():
 			return False
 
 		else:
-			return data[0] == fileData['id'] and data[1] == fileData['filename'] and self.plugin._file_manager.file_exists(data[2])
+			return data[0] == fileData['id'] and data[1] == fileData['filename'] and self.plugin._file_manager.file_exists(destination=FileDestinations.LOCAL, path=data[2])
